@@ -1,0 +1,9 @@
+Memoization Recipe :
+1. Make it work
+	Visualize the problem as a tree
+	Implement tree using recursion {Leaves are base case}
+	Test it
+2. Make it efficient
+	Add a memo object
+	Add a base case to return  memo values
+	store retun values to memo
