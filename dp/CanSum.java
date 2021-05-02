@@ -37,7 +37,7 @@ for(int i=0;i<a.length;i++){
 	{Boolean True = new Boolean(true); return True;}
 	}
 Boolean False = new Boolean(false);return False;
-// Time complexity O(n + m)
+// Time complexity O(n * m)
 //Space complexity O(m) 
 }
 
