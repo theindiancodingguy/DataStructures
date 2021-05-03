@@ -34,25 +34,32 @@ return null;
 
 
 //memoization approach
-ArrayList howSum_mem(int sum,int [] a ,ArrayList num,HashMap hm){
-if(hm.containsKey(sum)) return (ArrayList)hm.get(sum);
+ArrayList howSum_mem(int sum,int [] a ,ArrayList num,HashMap hm) {
+if(hm.containsKey(sum)) return (ArrayList<Integer>)hm.get(sum);
 if(sum == 0) return num;
 if(sum < 0) return null;
  for(int i=0;i<a.length;i++){
  int rem = sum - a[i];
- ArrayList res = howSum_mem(sum,a,num,hm);
+ ArrayList res = howSum_mem(rem,a,num,hm);
  if(res != null){
    res.add(a[i]);
    hm.put(sum,res);
-   return num;
+  return (ArrayList)hm.get(res);
  }
 }
+hm.put(sum,null);
 return null;
+// Time Comlexity(n * m * m)  we converted exponential to polynomial
+// Space Complexity O(m * m )
 }
 
+
 public static void main(String args[]){
+
+//Necessary pre requesite
 Scanner in = new Scanner(System.in);
-ArrayList<Integer> num = new  ArrayList<>();
+ArrayList<Integer> num_rec = new  ArrayList<>();
+ArrayList<Integer> num_mem = new  ArrayList<>();
 HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
 System.out.print("Enter the array size: ");
 int n = in.nextInt();
@@ -62,8 +69,13 @@ System.out.print("Enter the array elements: ");
  a[i] = in.nextInt();
 System.out.print("Enter the sum: ");
 int sum = in.nextInt();
-ArrayList<Integer> res_mem = new HowSum().howSum_mem(sum,a,num,hm);
-ArrayList<Integer> res_rec = new HowSum().howSum_rec(sum,a,num);
+
+//calling the functions
+ArrayList<Integer> res_mem = new HowSum().howSum_mem(sum,a,num_mem,hm);
+System.out.println("Memoization execution completed");
+ArrayList<Integer> res_rec = new HowSum().howSum_rec(sum,a,num_rec);
+System.out.println("Recursion execution completed");
+// printing the result
 if(res_mem == null )System.out.println("Sum not possible");
 else{
  System.out.print("Suming elements are: ");
@@ -75,5 +87,6 @@ System.out.println();
  System.out.print(number + " ");
 System.out.println();
 }
+
 }
 }
