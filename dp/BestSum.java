@@ -41,11 +41,13 @@ ArrayList shortestCombination = null;
 // Space Complexity O(m * m )
 }
 
+//memoization approach
 ArrayList bestSum_mem(int targetSum,int a[] , HashMap hm){
 ArrayList<Integer> num = new ArrayList<>();
-if(hm.containsKey(targetSum)) return (ArrayList)hm.get(targetSum);
 if(targetSum == 0) return num;
 if(targetSum < 0) return null;
+if(hm.containsKey(targetSum)) return (ArrayList)hm.get(targetSum);
+
 ArrayList shortestCombination = null;
  for(int i=0;i<a.length;i++){
  int rem = targetSum - a[i];
@@ -53,8 +55,9 @@ ArrayList shortestCombination = null;
  if(res != null){
  res.add(a[i]);
  ArrayList combination = res;
- if(shortestCombination == null || combination.size() < shortestCombination.size())
+ if(shortestCombination == null || combination.size() < shortestCombination.size()){
  shortestCombination = combination;
+   }
   }
  }
 hm.put(targetSum,shortestCombination); 
