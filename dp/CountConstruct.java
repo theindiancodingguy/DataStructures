@@ -14,6 +14,10 @@ for(int i=0;i<wordBank.length;i++){
   }
  } 
 return totalCount;
+// m length of target string
+//n word bank length
+// Time complexity is O(n^m *m ) time
+// Space complexity is O(m^2) space
 }
 
 
@@ -32,6 +36,8 @@ for(int i=0;i<wordBank.length;i++){
  } 
 Integer total = new Integer(totalCount);
 return total;
+// Time complexity is O(n * m * m)
+// Space complexity is O(m^2) space
 }
 
 public static void main(String args[]){
