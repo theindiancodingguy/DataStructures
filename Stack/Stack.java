@@ -1,17 +1,17 @@
-class Stack<Data>{
+class Stack{
 
 
-class Node<Data>{
-Data data;
+class Node{
+Integer data;
 Node next;
-public Node(Data data){
+public Node(Integer data){
 this.data = data;
 }
 }
 
 Node top = null;
 
-public void push(Data data){
+public void push(Integer data){
 Node stack_node = new Node(data);
 if(top == null){
 stack_node.next = null;
@@ -20,20 +20,20 @@ stack_node.next = top;
 top = stack_node;
 }
 
-public Data pop(){
+public Integer pop(){
 if(top ==  null) return null;
 Node temp =  top;
 top = top.next;
-return temp.data;
+return (Integer)temp.data;
 }
 
-public Data peek(){
+public Integer peek(){
 
-return top.data;
+return (Integer)top.data;
 }
 
 public static void main(String args[]){
-Stack <Object> stack = new Stack();
+Stack  stack = new Stack();
 stack.push(1);
 stack.push(2);
 stack.push(3);
